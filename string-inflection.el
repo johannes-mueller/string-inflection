@@ -366,6 +366,13 @@ This can be `remain' – remain at the initial position but not beyond the end o
   (let ((case-fold-search nil))
     (string-match "\\`[[:lower:][:digit:]_]+\\'" str)))
 
+(defun string-inflection-underscore-p-exp (str)
+  "if foo_bar => t"
+  (let ((case-fold-search nil))
+    (and (not (string-match "[[:upper:]]" str))
+         (string-match "[^[:word:]]?[[:lower:]][[:lower:][:digit:]_]+[^[:word:]]?" str))))
+
+
 (defun string-inflection-upcase-p (str)
   "if FOO_BAR => t"
   (let ((case-fold-search nil))
